@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="gradient.css">
+</head>
+<body class="body">
+   <section>
+    <div>
+        <button id="MyBtn1" style="background-color: #051937; color: white;">#051937</button>
+        <button id="MyBtn2" style="background-color: #008793; color: white;">#008793</button>
+    </div>
+    <h2>Click to copy the code</h2>
+    <div class="CopyCode">
+        background-image: linear-gradient(to right,rgb(92,145,229) rgb(152,63,198))
+    </div>
+   </section>
+   <script>
+    let btn1 = document.getElementById("MyBtn1");
+    let btn2 = document.getElementById("MyBtn2");
+    let copyDiv = document.querySelector(".CopyCode");
+    
+    const hexValues = () => {
+        let myHexaValues = "0123456789abcdef";
+        let colors = "#";
+        for (let i = 0; i < 6; i++) {
+            colors += myHexaValues[Math.floor(Math.random() * 16)];
+        }
+        return colors;
+    };
+    
+    const handleButton1 = () => {
+        btn2.style.backgroundColor = hexValues(); 
+
+        let rgb1 = hexValues();
+        btn2.style.backgroundColor = rgb1; 
+        btn2.innerText = rgb1; 
+
+        console.log(rgb1);
+        document.body.style.backgroundImage = `linear-gradient(to right, ${rgb1}, #444)`;
+        copyDiv.innerHTML = `background-image: linear-gradient(to right, ${rgb1}, #444)`;
+    };
+
+    const handleButton2 = () => {
+        btn1.style.backgroundColor = hexValues(); 
+
+        let rgb2 = hexValues();
+        btn1.style.backgroundColor = rgb2; 
+        btn1.innerText = rgb2; 
+
+        console.log(rgb2);
+        document.body.style.backgroundImage = `linear-gradient(to right, #444, ${rgb2})`;
+        copyDiv.innerHTML = `background-image: linear-gradient(to right, #444, ${rgb2})`;
+    };
+
+    btn1.addEventListener('click', handleButton1);
+    btn2.addEventListener('click', handleButton2);
+   </script>
+</body>
+</html>
